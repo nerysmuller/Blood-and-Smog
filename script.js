@@ -1,60 +1,29 @@
-document.addEventListener('DOMContentLoaded', () => {
-  initializePageTransitions();
-  initializeAmbientEffects();
-});
-
-function initializePageTransitions() {
-  const transition = document.getElementById('pageTransition');
-
-  document.querySelectorAll('a[href]').forEach((link) => {
-    const url = new URL(link.href, window.location.href);
-    const isLocal = url.origin === window.location.origin && !link.target && !url.hash;
-    if (!isLocal || link.hasAttribute('download')) return;
-
-    link.addEventListener('click', (event) => {
+(() => {
+  document.querySelectorAll('a[href$=".html"]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const transition = document.getElementById('pageTransition');
+      if (!transition) return;
       event.preventDefault();
-      if (!transition) {
-        window.location.assign(url.href);
-        return;
-      }
-
       transition.classList.add('active');
-      window.setTimeout(() => window.location.assign(url.href), 420);
+      setTimeout(() => { window.location.href = link.href; }, 430);
     });
   });
-}
 
-function initializeAmbientEffects() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (document.querySelector('.ambient-effects')) return;
-
-  const layer = document.createElement('div');
-  layer.className = 'ambient-effects';
-  layer.setAttribute('aria-hidden', 'true');
-  layer.innerHTML = `
-    <span class="candle-glow left"></span>
-    <span class="candle-glow right"></span>
-    <span class="candle-glow low"></span>
-    <span class="smoke-veil"></span>
-  `;
-  document.body.prepend(layer);
-
-  const createDrip = () => {
-    const drip = document.createElement('span');
-    drip.className = 'blood-drip';
-    drip.style.left = `${4 + Math.random() * 92}%`;
-    drip.style.setProperty('--drip-width', `${3 + Math.random() * 4}px`);
-    drip.style.setProperty('--drip-height', `${90 + Math.random() * 190}px`);
-    drip.style.setProperty('--drip-distance', `${36 + Math.random() * 54}vh`);
-    drip.style.setProperty('--drip-speed', `${9 + Math.random() * 8}s`);
-    layer.appendChild(drip);
-    drip.addEventListener('animationend', () => drip.remove(), { once: true });
-  };
-
-  // A single early trail establishes the effect without turning the page into a slaughterhouse.
-  window.setTimeout(createDrip, 1800 + Math.random() * 2400);
-  window.setInterval(() => {
-    if (document.hidden || layer.querySelectorAll('.blood-drip').length >= 3) return;
-    createDrip();
-  }, 8500);
-}
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !document.body.classList.contains('landing-page')) {
+    const makeDrop = () => {
+      const drop = document.createElement('i');
+      drop.setAttribute('aria-hidden', 'true');
+      Object.assign(drop.style, {
+        position:'fixed', zIndex:'-1', top:'-80px', left:`${5 + Math.random()*90}%`, width:`${2+Math.random()*4}px`,
+        height:`${45+Math.random()*120}px`, borderRadius:'60% 60% 50% 50%', pointerEvents:'none',
+        background:'linear-gradient(#7b0f17,#2b0509)', opacity:String(.18+Math.random()*.22),
+        transition:'transform 10s linear, opacity 2s ease 8s'
+      });
+      document.body.appendChild(drop);
+      requestAnimationFrame(() => { drop.style.transform = `translateY(${window.innerHeight + 220}px)`; drop.style.opacity = '0'; });
+      setTimeout(() => drop.remove(), 11000);
+    };
+    setInterval(makeDrop, 12000);
+  }
+})();
