@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme(DEFAULT_THEME);
   });
 
-  document.querySelectorAll('[data-dice]').forEach(button => {
+  document.querySelectorAll('.dice-btn').forEach(button => {
     button.addEventListener('click', () => rollDie(Number(button.dataset.dice)));
   });
 

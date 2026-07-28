@@ -1,1 +1,12 @@
-document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('a[href$=".html"]').forEach(link=>link.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const t=document.getElementById('pageTransition');if(!t)return;e.preventDefault();t.classList.add('active');setTimeout(()=>location.href=link.href,320)}));document.querySelectorAll('.map-pin').forEach(pin=>pin.addEventListener('click',()=>{const box=document.getElementById('mapReadout');if(!box)return;box.innerHTML=`<p class="typed-label">District record</p><h3>${pin.dataset.name}</h3><p>${pin.dataset.copy}</p>`;}));const wobble=document.querySelectorAll('[data-wobble]');window.addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5)*.6,y=(e.clientY/innerHeight-.5)*.4;wobble.forEach(el=>el.style.transform=`translate(${x}px,${y}px)`)});});
+(() => {
+  document.querySelectorAll('a[href$=".html"]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const transition = document.getElementById('pageTransition'); if (!transition) return;
+      event.preventDefault(); transition.classList.add('active');
+      setTimeout(() => { window.location.href = link.href; }, 430);
+    });
+  });
+
+  // Ambient motion is handled entirely in CSS: layered fog and falling ash.
+})();
