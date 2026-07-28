@@ -167,3 +167,14 @@ body[data-dossier-theme="silver"]{--theme-accent:#a9adb4;--theme-accent-soft:rgb
   .edge-blood{width:24px;opacity:.45}.candelabra{display:none}
   .map-hotspot span{font-size:.52rem;padding:4px 6px;bottom:calc(100% + 7px)}
 }
+
+/* Player dossier ability modifiers */
+.ability-card .ability-modifier {
+  display: block;
+  margin-top: .15rem;
+  color: var(--theme-accent, var(--gold));
+  font-family: 'Cormorant SC', serif;
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+}

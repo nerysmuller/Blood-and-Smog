@@ -1,21 +1,15 @@
-# Blood & Smog — Session One Dashboard
+# Blood & Smog Campaign Dashboard
 
-A gothic Victorian campaign introduction for a D&D game set in Shroudkeep, 1891.
+A Gothic Victorian GitHub Pages campaign hub for Blood & Smog.
 
-## Pages
-- `index.html` — sealed-letter splash page
-- `home.html` — Session One introduction
-- `maps.html` — interactive Shroudkeep map built from the hand-drawn notebook plan
-- `characters.html` — public-knowledge dossiers
-- `quick-rules.html` — beginner field guide
-- `players.html` — placeholder personal files, dice roller, and browser-local notes
+## Add your player characters
 
-## GitHub Pages
-Upload the project files to the root of the repository and enable GitHub Pages from the repository settings. `index.html` is the entry point.
+Open `player-script.js` and edit the clearly marked `playerData` section at the top. The player dropdown is generated automatically from that data.
 
-## Notes
-The campaign primer and external rules PDF are not included or linked anywhere in this build. Player notes use browser `localStorage`, so they remain only on the device and browser where they were written.
+See `PLAYER-DATA-GUIDE.md` for a complete example and the available dossier color themes.
 
-## Vintage map assets
-- `assets/vintage-london-1890.jpg`: George W. Bacon, 1890, public domain via Wikimedia Commons. Used as visual inspiration for Shroudkeep.
-- `assets/vintage-moldavia.png`: historic map from *Descriptio Moldaviae*, public domain via Wikimedia Commons. Used as visual inspiration for Desolamus.
+## Publish on GitHub Pages
+
+Upload the contents of this folder to the root of the repository. Keep `styles.css`, `script.js`, `player-script.js`, all HTML files, and the `assets` folder together at the same level shown here.
+
+The site entry point is `index.html`.
