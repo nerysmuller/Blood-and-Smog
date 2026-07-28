@@ -376,8 +376,8 @@ body.landing-page{
 
 /* A readable Gothic display face for main page headings. */
 h1,h2,h3,h4{
-  font-family:'Special Elite','Cormorant Garamond',serif;
-  font-weight:600;
+  font-family:'Cormorant SC','Cormorant Garamond',serif;
+  font-weight:650;
   letter-spacing:.012em;
 }
 .section>h2,.dashboard-section>h3,.card h3,.rule-card h3,.dossier-card h3,.location-card h3{
