@@ -26,9 +26,9 @@ const playerData = {
       CHA: 10
     },
     attacks: [
-      'Club • +5 to hit • 1d4 + 1 bludgeoning'
-      'Dagger • +6 to hit • 1d4 + 1 piercing'
-      'Steel Defender: Rend • +7 to hit • 1d8 + 5 force'
+      'Club • +5 to hit • 1d4 + 1 bludgeoning',
+      'Dagger • +6 to hit • 1d4 + 1 piercing',
+      'Steel Defender: Rend • +7 to hit • 1d8 + 5 force',
       'Unarmed Strike • +5 to hit • 2 bludgeoning'
     ]
   },
@@ -104,7 +104,7 @@ const playerData = {
 
   player5: {
     name: 'Player Five',
-    fileLabel: 'Cell V — Place Five',
+    fileLabel: 'Cell V — Player Five',
     className: 'Barbarian • Level 10',
     race: 'Species',
     level: 10,
