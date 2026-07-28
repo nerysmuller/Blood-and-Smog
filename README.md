@@ -1,9 +1,17 @@
-# Blood & Smog Campaign Dashboard
+# Blood & Smog — Shroudkeep Archive UI
 
-A Gothic Victorian GitHub Pages campaign hub for Blood & Smog 5.5e.
+Upload the contents of this folder to the root of your GitHub Pages repository.
 
-## July 2026 shadow-fog update
-- Main backgrounds use dark red/charcoal fog and sparse falling ash.
-- Bright gold hover sweeps were replaced with a restrained ink-light response.
-- Main headings use Grenze Gotisch; body copy remains Alegreya and archival labels remain Cormorant SC.
-- Prisoner login uses an explicit button and persisted selection, preventing accidental form reloads.
+## Player data
+Edit only the `playerData` object at the top of `player-script.js`. The dropdown is generated automatically.
+
+## Main pages
+- `index.html` — sealed-letter splash screen
+- `home.html` — Session One introduction
+- `maps.html` — interactive Shroudkeep map
+- `lore.html` — spoiler-safe lore
+- `characters.html` — public dossiers
+- `quick-rules.html` — beginner field guide
+- `players.html` — player dossiers, themes, dice, and browser notes
+
+All map assets are stored locally in `assets/`. No campaign primer or rule PDF is linked from the website.

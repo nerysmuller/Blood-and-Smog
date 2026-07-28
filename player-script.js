@@ -40,21 +40,21 @@ const playerData = {
     attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
   },
   player4: {
-    name: 'Prisoner Four', fileLabel: 'Cell IV — Player Four', className: 'Sorcerer • Level 10',
+    name: 'Player Four', fileLabel: 'Cell IV — Player Four', className: 'Sorcerer • Level 10',
     race: 'Vampire', level: 10, background: 'Background', defaultTheme: 'silver',
     hp: { current: 70, max: 70 }, ac: 15,
     abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
     attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
   },
   player5: {
-    name: 'Prisoner Five', fileLabel: 'Cell V — Player Five', className: 'Barbarian • Level 10',
+    name: 'Player Five', fileLabel: 'Cell V — Player Five', className: 'Barbarian • Level 10',
     race: 'Species', level: 10, background: 'Background', defaultTheme: 'sapphire',
     hp: { current: 70, max: 70 }, ac: 15,
     abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
     attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
   },
   player6: {
-    name: 'Prisoner Six', fileLabel: 'Cell VI — Player Six', className: 'Rogue • Level 10',
+    name: 'Player Six', fileLabel: 'Cell VI — Player Six', className: 'Rogue • Level 10',
     race: 'Species', level: 10, background: 'Background', defaultTheme: 'amethyst',
     hp: { current: 70, max: 70 }, ac: 15,
     abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme(DEFAULT_THEME);
   });
 
-  document.querySelectorAll('.dice-btn').forEach(button => {
+  document.querySelectorAll('[data-dice]').forEach(button => {
     button.addEventListener('click', () => rollDie(Number(button.dataset.dice)));
   });
 
