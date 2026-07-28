@@ -1,4 +1,4 @@
-# Adding Your Blood & Smog Players
+# Adding Blood & Smog Players
 
 Open `player-script.js`. The editable section begins immediately beneath:
 
