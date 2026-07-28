@@ -8,10 +8,36 @@
 
 const playerData = {
   player1: {
-    name: 'Replace with Character One',
-    fileLabel: 'Cell I — Replace with Character One',
-    className: 'Class • Level 10',
-    race: 'Species',
+    name: 'Demascus Efferpot',
+    fileLabel: 'Cell I — Demascus Efferpot',
+    className: 'Artificer • Level 10',
+    race: 'Human',
+    level: 10,
+    background: 'Criminal/Spy',
+    defaultTheme: 'amethyst',
+    hp: { current: 93, max: 93 },
+    ac: 14,
+    abilities: {
+      STR: 12,
+      DEX: 14,
+      CON: 18,
+      INT: 16,
+      WIS: 13,
+      CHA: 10
+    },
+    attacks: [
+      'Club • +5 to hit • 1d4 + 1 bludgeoning'
+      'Dagger • +6 to hit • 1d4 + 1 piercing'
+      'Steel Defender: Rend • +7 to hit • 1d8 + 5 force'
+      'Unarmed Strike • +5 to hit • 2 bludgeoning'
+    ]
+  },
+
+  player2: {
+    name: 'Prisoner Two',
+    fileLabel: 'Cell II — Prisoner Two',
+    className: 'Rogue • Level 10',
+    race: 'Human',
     level: 10,
     background: 'Background',
     defaultTheme: 'oxblood',
@@ -30,10 +56,10 @@ const playerData = {
     ]
   },
 
-  player2: {
-    name: 'Replace with Character Two',
-    fileLabel: 'Cell II — Replace with Character Two',
-    className: 'Class • Level 10',
+  player3: {
+    name: 'Prisoner Three',
+    fileLabel: 'Cell III — Prisoner Three',
+    className: 'Blood Hunter • Level 10',
     race: 'Species',
     level: 10,
     background: 'Background',
@@ -53,10 +79,33 @@ const playerData = {
     ]
   },
 
-  player3: {
-    name: 'Replace with Character Three',
-    fileLabel: 'Cell III — Replace with Character Three',
-    className: 'Class • Level 10',
+  player4: {
+    name: 'Player Four',
+    fileLabel: 'Cell IV — Player Four',
+    className: 'Sorcerer • Level 10',
+    race: 'Vampire',
+    level: 10,
+    background: 'Background',
+    defaultTheme: 'silver',
+    hp: { current: 70, max: 70 },
+    ac: 15,
+    abilities: {
+      STR: 10,
+      DEX: 10,
+      CON: 10,
+      INT: 10,
+      WIS: 10,
+      CHA: 10
+    },
+    attacks: [
+      'Unarmed Strike • +4 to hit • 1 bludgeoning'
+    ]
+  },
+
+  player5: {
+    name: 'Player Five',
+    fileLabel: 'Cell V — Place Five',
+    className: 'Barbarian • Level 10',
     race: 'Species',
     level: 10,
     background: 'Background',
@@ -76,37 +125,14 @@ const playerData = {
     ]
   },
 
-  player4: {
-    name: 'Replace with Character Four',
-    fileLabel: 'Cell IV — Replace with Character Four',
-    className: 'Class • Level 10',
+  player6: {
+    name: 'Player Six',
+    fileLabel: 'Cell VI — Player Six',
+    className: 'Rogue • Level 10',
     race: 'Species',
     level: 10,
     background: 'Background',
     defaultTheme: 'amethyst',
-    hp: { current: 70, max: 70 },
-    ac: 15,
-    abilities: {
-      STR: 10,
-      DEX: 10,
-      CON: 10,
-      INT: 10,
-      WIS: 10,
-      CHA: 10
-    },
-    attacks: [
-      'Unarmed Strike • +4 to hit • 1 bludgeoning'
-    ]
-  },
-
-  player5: {
-    name: 'Replace with Character Five',
-    fileLabel: 'Cell V — Replace with Character Five',
-    className: 'Class • Level 10',
-    race: 'Species',
-    level: 10,
-    background: 'Background',
-    defaultTheme: 'rose',
     hp: { current: 70, max: 70 },
     ac: 15,
     abilities: {
