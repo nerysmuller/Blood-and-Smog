@@ -1,7 +1,5 @@
 # Blood & Smog — Shroudkeep Archive UI
 
-Upload the contents of this folder to the root of your GitHub Pages repository.
-
 ## Player data
 Edit only the `playerData` object at the top of `player-script.js`. The dropdown is generated automatically.
 
