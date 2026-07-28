@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Cormorant+SC:wght@500;600;700&family=Jim+Nightshade&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Cormorant+SC:wght@500;600;700&family=Jim+Nightshade&family=Special+Elite&family=Grenze+Gotisch:wght@400;500;600;700&display=swap');
 
 :root{
   --ink:#17110f;--ink-soft:#2b201c;--paper:#d8c8aa;--paper-light:#eee3ce;--paper-dim:#b9a98f;
@@ -367,4 +367,121 @@ body.landing-page{
 
 @media(prefers-reduced-motion:reduce){
   body:not(.landing-page)::after,.ash,.soot-layer,.fog-layer,.blood-rain,.newspaper-wall,.news-column::after{animation:none!important}
+}
+
+
+/* =========================================================
+   SHADOW-FOG ART DIRECTION — darker, quieter, less ornamental
+   ========================================================= */
+
+/* A readable Gothic display face for main page headings. */
+h1,h2,h3,h4{
+  font-family:'Grenze Gotisch','Cormorant Garamond',serif;
+  font-weight:600;
+  letter-spacing:.012em;
+}
+.section>h2,.dashboard-section>h3,.card h3,.rule-card h3,.dossier-card h3,.location-card h3{
+  font-family:'Cormorant SC',serif;
+  font-weight:600;
+  letter-spacing:.07em;
+}
+
+/* Kill the bright foil sweep. Hover should feel like ink catching weak light. */
+.card::after,.rule-card::after,.dossier-card::after,.location-card::after,.info-card::after,
+.objective-card::after,.evidence-card::after,.stat-card::after,.update-item::after,
+.warning-box::after,.map-details::after,.dashboard-section::after,.section::after{
+  inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(192,157,92,.065),transparent 58%);
+  transform:none;
+  transition:opacity .32s ease;
+}
+.card:hover,.rule-card:hover,.dossier-card:hover,.location-card:hover,.info-card:hover,
+.objective-card:hover,.evidence-card:hover,.stat-card:hover,.update-item:hover,
+.warning-box:hover,.map-details:hover{
+  border-color:rgba(162,126,75,.38);
+  box-shadow:0 20px 48px rgba(0,0,0,.68),inset 0 0 34px rgba(87,10,19,.055);
+  transform:translateY(-1px);
+}
+.card:hover::after,.rule-card:hover::after,.dossier-card:hover::after,.location-card:hover,
+.info-card:hover::after,.objective-card:hover::after,.evidence-card:hover::after,
+.stat-card:hover::after,.update-item:hover::after,.warning-box:hover::after,.map-details:hover::after{
+  animation:none;
+  opacity:1;
+}
+
+/* Deep, non-starry background. */
+body:not(.landing-page){background:#030304}
+body:not(.landing-page)::before{
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(2,2,3,.94),rgba(5,5,6,.97)),
+    radial-gradient(ellipse at 14% 38%,rgba(66,6,13,.18),transparent 34%),
+    radial-gradient(ellipse at 82% 66%,rgba(57,58,62,.10),transparent 40%);
+  background-size:auto;
+}
+body:not(.landing-page)::after{
+  inset:-28%;
+  background:
+    radial-gradient(ellipse at 12% 58%,rgba(93,9,18,.24),transparent 30%),
+    radial-gradient(ellipse at 44% 76%,rgba(42,43,47,.30),transparent 38%),
+    radial-gradient(ellipse at 86% 31%,rgba(70,8,16,.18),transparent 34%),
+    radial-gradient(ellipse at 65% 16%,rgba(31,32,35,.26),transparent 42%);
+  filter:blur(68px) contrast(1.06);
+  mix-blend-mode:screen;
+  opacity:.46;
+  animation:shadowFogMass 38s ease-in-out infinite alternate;
+}
+
+/* The old repeating dots looked celestial. This is sparse, dirty ash. */
+.ash,.soot-layer{
+  opacity:.24;
+  background-image:
+    radial-gradient(ellipse,rgba(194,190,181,.42) 0 .65px,transparent .9px),
+    radial-gradient(ellipse,rgba(104,101,97,.34) 0 .8px,transparent 1.2px),
+    radial-gradient(ellipse,rgba(215,207,193,.22) 0 .45px,transparent .8px);
+  background-size:113px 157px,181px 229px,257px 311px;
+  background-position:17px -90px,91px -130px,203px -210px;
+  filter:blur(.25px);
+  animation:dirtyAshFall 29s linear infinite;
+}
+
+/* Repurpose the existing layer as low moving fog instead of red rain. */
+.fog-layer,.blood-rain{
+  inset:-22%;
+  opacity:.58;
+  background:
+    radial-gradient(ellipse at 8% 68%,rgba(71,72,77,.28),transparent 32%),
+    radial-gradient(ellipse at 88% 42%,rgba(82,7,16,.18),transparent 34%),
+    radial-gradient(ellipse at 50% 92%,rgba(31,32,36,.42),transparent 38%);
+  filter:blur(54px);
+  mix-blend-mode:screen;
+  transform:scale(1.2);
+  animation:groundFog 44s ease-in-out infinite alternate;
+}
+
+.main-header{
+  background:linear-gradient(180deg,rgba(2,2,3,.98),rgba(5,4,5,.88) 74%,transparent);
+}
+.section,.intro-hero,.login-container,.dashboard-section,.map-details,.warning-box{
+  background:linear-gradient(145deg,rgba(14,11,12,.955),rgba(5,5,6,.965));
+  border-color:rgba(126,101,72,.26);
+}
+
+@keyframes dirtyAshFall{
+  from{transform:translate3d(0,-20%,0)}
+  to{transform:translate3d(-46px,115%,0)}
+}
+@keyframes groundFog{
+  0%{transform:translate3d(-8%,2%,0) scale(1.18);opacity:.36}
+  48%{transform:translate3d(2%,-1%,0) scale(1.25);opacity:.60}
+  100%{transform:translate3d(9%,3%,0) scale(1.20);opacity:.42}
+}
+@keyframes shadowFogMass{
+  0%{transform:translate3d(-5%,0,0) scale(1);opacity:.34}
+  52%{transform:translate3d(2%,-3%,0) scale(1.08);opacity:.52}
+  100%{transform:translate3d(6%,2%,0) scale(1.03);opacity:.40}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body:not(.landing-page)::after,.ash,.soot-layer,.fog-layer,.blood-rain{animation:none!important}
 }
