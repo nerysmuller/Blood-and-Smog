@@ -29,3 +29,141 @@ body.landing-page{overflow:hidden;display:grid;place-items:center;background:#08
 .archive-table{width:100%;border-collapse:collapse}.archive-table th,.archive-table td{padding:12px;border-bottom:1px solid var(--line);text-align:left}.archive-table th{font-family:'Cormorant SC',serif;text-transform:uppercase;color:var(--gold)}.table-wrap{overflow:auto}
 @media(max-width:760px){.newspaper-wall{grid-template-columns:repeat(3,minmax(230px,1fr));left:-55%;right:-55%}.letter{max-height:calc(100vh - 34px);padding-bottom:62px}.seal-button{width:92px;height:92px;margin-bottom:-108px}.main-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.nav-link{white-space:nowrap}.dashboard-grid{grid-template-columns:1fr}.dashboard-section.wide{grid-column:auto}.map-note-grid{grid-template-columns:1fr}.abilities-grid{grid-template-columns:repeat(3,1fr)}.large-card{grid-column:auto}.dashboard-header{align-items:flex-start;flex-direction:column}.container{width:min(100% - 20px,1120px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
+
+/* ===== July 2026 atmosphere, interaction, and dossier UI pass ===== */
+:root{
+  --theme-accent:var(--blood-bright);
+  --theme-accent-soft:rgba(160,21,32,.18);
+  --theme-accent-glow:rgba(160,21,32,.42);
+}
+
+/* Candlelit stage and side blood trails */
+body:not(.landing-page){
+  overflow-x:hidden;
+  background:#050303;
+}
+body:not(.landing-page) .site-shell::before,
+body:not(.landing-page) .site-shell::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  pointer-events:none;
+}
+body:not(.landing-page) .site-shell::before{
+  background:
+    radial-gradient(ellipse 16% 55% at 0% 42%,rgba(181,48,24,.21),transparent 62%),
+    radial-gradient(ellipse 15% 52% at 100% 44%,rgba(150,24,18,.19),transparent 64%),
+    radial-gradient(ellipse 38% 24% at 50% 102%,rgba(92,8,14,.18),transparent 70%);
+  mix-blend-mode:screen;
+  filter:blur(8px);
+  animation:roomCandlePulse 4.8s steps(1,end) infinite;
+}
+body:not(.landing-page) .site-shell::after{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.74),transparent 14%,transparent 86%,rgba(0,0,0,.76)),
+    radial-gradient(circle at 12% 24%,rgba(255,147,66,.07),transparent 14%),
+    radial-gradient(circle at 88% 31%,rgba(255,114,51,.065),transparent 13%);
+  animation:roomShadowShift 9s ease-in-out infinite alternate;
+}
+@keyframes roomCandlePulse{
+  0%,100%{opacity:.64} 9%{opacity:.82} 13%{opacity:.57} 21%{opacity:.78} 49%{opacity:.66} 53%{opacity:.9} 56%{opacity:.62} 78%{opacity:.76}
+}
+@keyframes roomShadowShift{to{transform:scale(1.025) translateX(.4%);filter:brightness(1.08)}}
+
+/* CSS candelabras injected by script.js */
+.candelabra{
+  position:fixed;
+  z-index:-1;
+  bottom:2vh;
+  width:92px;
+  height:250px;
+  opacity:.62;
+  filter:drop-shadow(0 0 22px rgba(127,11,16,.42));
+  pointer-events:none;
+}
+.candelabra.left{left:12px}.candelabra.right{right:12px;transform:scaleX(-1)}
+.candelabra .stem,.candelabra .arm,.candelabra .base{position:absolute;background:linear-gradient(90deg,#281711,#8a6842 45%,#21120e);border:1px solid rgba(190,150,84,.25)}
+.candelabra .stem{left:43px;bottom:28px;width:9px;height:145px;border-radius:8px}
+.candelabra .base{left:18px;bottom:16px;width:60px;height:12px;border-radius:50%}
+.candelabra .arm{left:18px;bottom:145px;width:62px;height:8px;border-radius:50%;transform:rotate(-10deg)}
+.candelabra .arm.second{transform:rotate(10deg);bottom:126px}
+.candelabra .candle{position:absolute;width:8px;height:54px;background:linear-gradient(90deg,#6e5944,#d6bea1 48%,#65503d);bottom:153px;border-radius:2px}
+.candelabra .candle.one{left:13px}.candelabra .candle.two{left:44px;bottom:177px}.candelabra .candle.three{right:8px;bottom:144px}
+.candelabra .flame{position:absolute;left:50%;top:-17px;width:10px;height:18px;transform:translateX(-50%);border-radius:55% 45% 55% 45%;background:radial-gradient(circle at 50% 70%,#fff5c0 0 12%,#d94825 38%,rgba(123,8,18,.08) 70%);box-shadow:0 0 12px #bd2a1d,0 0 30px rgba(148,10,18,.68);transform-origin:50% 100%;animation:flameDance 1.25s ease-in-out infinite alternate}
+.candelabra .candle:nth-child(even) .flame{animation-delay:-.53s}.candelabra .candle:nth-child(odd) .flame{animation-delay:-.91s}
+@keyframes flameDance{0%{transform:translateX(-50%) rotate(-5deg) scale(.9,1.08)}45%{transform:translateX(-50%) rotate(3deg) scale(1.08,.91)}100%{transform:translateX(-50%) rotate(-2deg) scale(.95,1.12)}}
+
+/* Slow blood accumulation down the page edges */
+.edge-blood{position:fixed;top:-12vh;bottom:0;width:42px;z-index:2;pointer-events:none;opacity:.72;filter:drop-shadow(0 0 9px rgba(69,0,7,.65))}
+.edge-blood.left{left:0}.edge-blood.right{right:0;transform:scaleX(-1)}
+.edge-blood::before,.edge-blood::after{content:"";position:absolute;top:0;background:linear-gradient(180deg,#290207 0,#760c16 18%,#3b0309 72%,transparent 100%);border-radius:0 0 60% 55%;animation:edgeDrip 17s ease-in-out infinite}
+.edge-blood::before{left:6px;width:9px;height:48vh}.edge-blood::after{left:20px;width:5px;height:72vh;animation-delay:-8s;animation-duration:25s}
+@keyframes edgeDrip{0%{transform:translateY(-22%);opacity:.25}38%{opacity:.72}72%,100%{transform:translateY(45%);opacity:.12}}
+
+/* Gold glimmer on every readable dossier / lore blurb */
+.card,.rule-card,.dossier-card,.location-card,.info-card,.objective-card,.evidence-card,.stat-card,.update-item,.warning-box,.map-details,.dashboard-section,.section{
+  overflow:hidden;
+  transition:border-color .28s ease,box-shadow .28s ease,transform .28s ease,background-color .28s ease;
+}
+.card::after,.rule-card::after,.dossier-card::after,.location-card::after,.info-card::after,.objective-card::after,.evidence-card::after,.stat-card::after,.update-item::after,.warning-box::after,.map-details::after,.dashboard-section::after,.section::after{
+  content:"";
+  position:absolute;
+  inset:-45% -70%;
+  pointer-events:none;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,238,177,.04) 47%,rgba(255,224,136,.32) 50%,rgba(255,244,204,.08) 53%,transparent 58%);
+  transform:translateX(-38%) rotate(4deg);
+  opacity:0;
+}
+.card:hover,.rule-card:hover,.dossier-card:hover,.location-card:hover,.info-card:hover,.objective-card:hover,.evidence-card:hover,.stat-card:hover,.update-item:hover,.warning-box:hover,.map-details:hover{
+  border-color:rgba(223,188,111,.64);
+  box-shadow:0 18px 45px rgba(0,0,0,.55),inset 0 0 30px var(--theme-accent-soft),0 0 16px rgba(185,152,88,.11);
+  transform:translateY(-2px);
+}
+.card:hover::after,.rule-card:hover::after,.dossier-card:hover::after,.location-card:hover::after,.info-card:hover::after,.objective-card:hover::after,.evidence-card:hover::after,.stat-card:hover::after,.update-item:hover::after,.warning-box:hover::after,.map-details:hover::after{
+  opacity:1;
+  animation:goldSweep .72s ease-out both;
+}
+@keyframes goldSweep{from{transform:translateX(-38%) rotate(4deg)}to{transform:translateX(38%) rotate(4deg)}}
+
+/* Ability score fix: contained 3x2 grid instead of overflowing six-wide row */
+.stat-grid{grid-template-columns:minmax(260px,1.35fr) minmax(150px,.65fr) minmax(150px,.65fr) minmax(320px,1.4fr)}
+.abilities-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.abilities-grid .stat-card{min-width:0;text-align:center;padding:16px 8px}
+.abilities-grid .result-value{font-size:2rem}
+.stat-card.large-card{grid-column:auto}
+.stat-card:last-child{grid-column:span 2}
+
+/* Dossier color customizer */
+.dossier-theme-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:18px;padding:20px 24px;border:1px solid var(--line);background:linear-gradient(120deg,rgba(9,6,6,.92),var(--theme-accent-soft));box-shadow:inset 0 0 30px var(--theme-accent-soft)}
+.dossier-theme-panel h3,.dossier-theme-panel p{margin:.15rem 0}.theme-options{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}.theme-btn{padding:8px 12px;border:1px solid rgba(185,152,88,.34);background:#0a0707;color:var(--paper-light);font-family:'Cormorant SC',serif;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}.theme-btn:hover,.theme-btn.active{border-color:var(--theme-accent);box-shadow:0 0 0 2px var(--theme-accent-soft),0 0 16px var(--theme-accent-glow);color:#fff6e5}
+body[data-dossier-theme="oxblood"]{--theme-accent:#a01520;--theme-accent-soft:rgba(160,21,32,.18);--theme-accent-glow:rgba(160,21,32,.46)}
+body[data-dossier-theme="emerald"]{--theme-accent:#658866;--theme-accent-soft:rgba(65,106,70,.2);--theme-accent-glow:rgba(81,139,90,.42)}
+body[data-dossier-theme="sapphire"]{--theme-accent:#587b9d;--theme-accent-soft:rgba(58,89,121,.22);--theme-accent-glow:rgba(79,125,169,.42)}
+body[data-dossier-theme="amethyst"]{--theme-accent:#80628d;--theme-accent-soft:rgba(91,63,105,.22);--theme-accent-glow:rgba(127,91,145,.42)}
+body[data-dossier-theme="amber"]{--theme-accent:#b7873e;--theme-accent-soft:rgba(154,103,39,.2);--theme-accent-glow:rgba(193,133,53,.42)}
+body[data-dossier-theme="rose"]{--theme-accent:#ad6878;--theme-accent-soft:rgba(143,72,91,.21);--theme-accent-glow:rgba(188,103,125,.42)}
+body[data-dossier-theme="silver"]{--theme-accent:#a9adb4;--theme-accent-soft:rgba(145,151,160,.17);--theme-accent-glow:rgba(188,194,203,.35)}
+.player-dashboard .dashboard-section,.player-dashboard .stat-card,.player-dashboard .saved-note-item{border-color:color-mix(in srgb,var(--theme-accent) 38%,rgba(185,152,88,.25));box-shadow:inset 0 0 24px var(--theme-accent-soft)}
+.player-dashboard .record-label,.player-dashboard label{color:color-mix(in srgb,var(--theme-accent) 58%,#e1c682)}
+.player-dashboard .saved-note-item{border-left-color:var(--theme-accent)}
+
+/* Map: visible district titles above each point */
+.interactive-map{isolation:isolate}
+.map-hotspot{width:24px;height:24px;z-index:3;transition:transform .2s ease,box-shadow .2s ease}
+.map-hotspot span{position:absolute;left:50%;bottom:calc(100% + 11px);transform:translateX(-50%);min-width:max-content;padding:5px 9px;background:rgba(20,10,8,.88);border:1px solid rgba(218,177,99,.52);color:#f5e4c5;font-family:'Cormorant SC',serif;font-size:clamp(.58rem,1vw,.78rem);letter-spacing:.06em;text-transform:uppercase;line-height:1;box-shadow:0 6px 16px rgba(0,0,0,.62);text-shadow:0 1px 3px #000;pointer-events:none}
+.map-hotspot span::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(218,177,99,.52)}
+.map-hotspot:hover,.map-hotspot:focus-visible{transform:scale(1.25);box-shadow:0 0 0 7px rgba(104,16,26,.28),0 0 24px rgba(210,64,69,.9)}
+.vintage-map-image{filter:sepia(.82) saturate(.68) contrast(1.06) brightness(.79)}
+
+@media(max-width:980px){
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-card:last-child{grid-column:1/-1}
+  .dossier-theme-panel{align-items:flex-start;flex-direction:column}.theme-options{justify-content:flex-start}
+  .candelabra{opacity:.34;transform:scale(.78);transform-origin:bottom}.candelabra.right{transform:scaleX(-1) scale(.78)}
+}
+@media(max-width:620px){
+  .stat-grid{grid-template-columns:1fr}.stat-card:last-child{grid-column:auto}.abilities-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .edge-blood{width:24px;opacity:.45}.candelabra{display:none}
+  .map-hotspot span{font-size:.52rem;padding:4px 6px;bottom:calc(100% + 7px)}
+}
