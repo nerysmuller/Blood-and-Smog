@@ -1,7 +1,5 @@
 /*
  * BLOOD & SMOG — PLAYER DOSSIER DATA
- * -----------------------------------
- * Edit ONLY the playerData section below to add your characters.
  * The prisoner-file dropdown, dossier statistics, attacks, party list,
  * default color theme, and browser-saved notes all update automatically.
  */
@@ -9,7 +7,7 @@
 const playerData = {
   player1: {
     name: 'Demascus Efferpot',
-    fileLabel: 'Cell I — Demascus Efferpot',
+    fileLabel: 'Prisoner: Demascus Efferpot',
     className: 'Artificer • Level 10',
     race: 'Human',
     level: 10,
@@ -26,43 +24,67 @@ const playerData = {
     ]
   },
   player2: {
-    name: 'Prisoner Two', fileLabel: 'Cell II — Prisoner Two', className: 'Rogue • Level 10',
-    race: 'Human', level: 10, background: 'Background', defaultTheme: 'oxblood',
-    hp: { current: 70, max: 70 }, ac: 15,
-    abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
-    attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
+    name: 'Persidus Kaladin', fileLabel: 'Prisoner: Persidus Kaladin', className: 'Barbarian • Level 10',
+    race: 'Goliath', level: 10, background: 'Haunted One', defaultTheme: 'oxblood',
+    hp: { current: 95, max: 95 }, ac: 18,
+    abilities: { STR: 19, DEX: 14, CON: 14, INT: 14, WIS: 6, CHA: 14 },
+    attacks: [
+      'Javelin • +8 to hit • 1d4 + 4 piercing',
+      'Longsword • +8 to hit • 1d10 + 4 slashing',
+      'Shortbow • +6 to hit • 1d6 + 2 piercing',
+      'Spear • +8 to hit • 1d6 + 4 piercing'
+    ]
   },
   player3: {
-    name: 'Prisoner Three', fileLabel: 'Cell III — Prisoner Three', className: 'Blood Hunter • Level 10',
-    race: 'Species', level: 10, background: 'Background', defaultTheme: 'emerald',
-    hp: { current: 70, max: 70 }, ac: 15,
-    abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
-    attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
+    name: 'Luce of the Hems', fileLabel: 'Prisoner: Luce of the Hems', className: 'Blood Hunter • Level 10',
+    race: 'Yuan-Ti', level: 10, background: 'Haunted One', defaultTheme: 'emerald',
+    hp: { current: 74, max: 74 }, ac: 14,
+    abilities: { STR: 12, DEX: 14, CON: 13, INT: 16, WIS: 18, CHA: 11 },
+    attacks: [
+      'Pistol • +8 to hit • 1d10 + 2 piercing',
+      'Chill Touch • +8 to hit • 2d8 necrotic',
+      'Eldritch Blast • +8 to hit • 1d10 force',
+      'Unarmed Strike • +5 to hit • 2 bludgeoning'
+    ]
   },
   player4: {
-    name: 'Prisoner Four', fileLabel: 'Cell IV — Player Four', className: 'Sorcerer • Level 10',
-    race: 'Vampire', level: 10, background: 'Background', defaultTheme: 'silver',
-    hp: { current: 70, max: 70 }, ac: 15,
-    abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
-    attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
+    name: 'Ezra Sharpwood', fileLabel: 'Prisoner: Ezra Sharpwood', className: 'Sorcerer • Level 10',
+    race: 'Dhampir', level: 10, background: 'Charlatan', defaultTheme: 'sapphire',
+    hp: { current: 62, max: 62 }, ac: 14,
+    abilities: { STR: 9, DEX: 18, CON: 15, INT: 13, WIS: 14, CHA: 19 },
+    attacks: [
+      'Fire Bolt • +8 to hit • 2d10 fire',
+      'Shocking Grasp • +8 to hit • 2d8 lightning',
+      'Sorcerous Burst • +8 to hit • 2d8 choice damage',
+      'Vampiric Touch • +5 to hit • 3d6 necrotic'
+    ]
   },
   player5: {
-    name: 'Prisoner Five', fileLabel: 'Cell V — Player Five', className: 'Barbarian • Level 10',
-    race: 'Species', level: 10, background: 'Background', defaultTheme: 'sapphire',
-    hp: { current: 70, max: 70 }, ac: 15,
-    abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
-    attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
+    name: 'Nellie Tenkettle', fileLabel: 'Prisoner: Nellie Tenkettle', className: 'Warlock • Level 10',
+    race: 'Halfling', level: 10, background: 'Pact Seeker', defaultTheme: 'amethyst',
+    hp: { current: 73, max: 73 }, ac: 14,
+    abilities: { STR: 13, DEX: 16, CON: 14, INT: 13, WIS: 14, CHA: 20 },
+    attacks: [
+      'Dagger • +7 to hit • 1d4 + 3 piercing',
+      'Guiding Bolt • +9 to hit • 8d6 radiant',
+      'Unarmed Strike • +5 to hit • 2 bludgeoning',
+      'Sacred Flame • saving throw • 2d8 radiant'
+    ]
   },
   player6: {
-    name: 'Prisoner Six', fileLabel: 'Cell VI — Player Six', className: 'Rogue • Level 10',
-    race: 'Species', level: 10, background: 'Background', defaultTheme: 'amethyst',
-    hp: { current: 70, max: 70 }, ac: 15,
-    abilities: { STR: 10, DEX: 10, CON: 10, INT: 10, WIS: 10, CHA: 10 },
-    attacks: ['Unarmed Strike • +4 to hit • 1 bludgeoning']
+    name: 'Ryn of Old Town', fileLabel: 'Prisoner: Ryn of Old Town', className: 'Gunslinger • Level 10',
+    race: 'Human', level: 10, background: 'Merchant', defaultTheme: 'amber',
+    hp: { current: 53, max: 53 }, ac: 14,
+    abilities: { STR: 10, DEX: 16, CON: 10, INT: 13, WIS: 11, CHA: 16 },
+    attacks: [
+      'Dagger • +7 to hit • 1d4 + 3 piercing',
+      'Revolver • +9 to hit • 2d6 + 3 piercing',
+      'Unarmed Strike • +4 to hit • 1 bludgeoning',
+      'Enhanced Unarmed Strike • +4 to hit • 1d4 bludgeoning'
+    ]
   }
 };
 
-/* Stop editing here unless you want to change dashboard behavior. */
 
 let currentPlayer = null;
 const $ = id => document.getElementById(id);
@@ -73,7 +95,6 @@ const VALID_THEMES = new Set([
   'sapphire',
   'amethyst',
   'amber',
-  'rose',
   'silver'
 ]);
 
